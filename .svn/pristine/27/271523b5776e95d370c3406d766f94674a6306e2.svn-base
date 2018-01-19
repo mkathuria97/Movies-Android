@@ -1,0 +1,133 @@
+package com.example.mayankkathuria.movies;
+
+public class Movie {
+    private String poster_path;
+    private boolean adult;
+    private String overview;
+    private String release_date;
+    private int[] genre_ids;
+    private int id;
+    private String original_title;
+    private String original_language;
+    private String title;
+    private String backdrop_path;
+    private double popularity;
+    private int vote_count;
+    private boolean video;
+    private double vote_average;
+
+    /**
+     * @return image path of the movie's poster
+     */
+    public String getPosterPath() {
+        return poster_path;
+    }
+
+    /**
+     * @return true if the movie is adult and false otherwise
+     */
+    public boolean getAdult(){
+        return adult;
+    }
+
+    /**
+     * @return summary of the movie
+     */
+    public String overview(){
+        return overview;
+    }
+
+    /**
+     * @return release date of the movie
+     */
+    public String getReleaseDate() {
+        return release_date;
+    }
+
+    /**
+     * @return a list of genres of a particular movie
+     */
+    public int[] getGenreIds() {
+        return genre_ids;
+    }
+
+    /**
+     * @return unique ID of the movie
+     */
+    public int getId(){
+        return id;
+    }
+
+    /**
+     * @return title of the movie
+     */
+    public String getOriginalTitle(){
+        return original_title;
+    }
+
+    /**
+     * @return language of the movie
+     */
+    public String getOriginalLanguage(){
+        return original_language;
+    }
+
+    /**
+     * @return title of the movie
+     */
+    public String getTitle(){
+        return title;
+    }
+
+    /**
+     * @return image path of the backdrop
+     */
+
+    public String getBackdropPath(){
+        return backdrop_path;
+    }
+
+    /**
+     * @return popularity of the movie
+     */
+    public double getPopularity(){
+        return popularity;
+    }
+
+    /**
+     * @return vote count of the movie
+     */
+    public int getVoteCount(){
+        return vote_count;
+    }
+
+    /**
+     * @return true if the movie has a video and false otherwise
+     */
+    public boolean getVideo(){
+        return video;
+    }
+
+    /**
+     * @return average vote earned by the movie
+     */
+    public double getVoteAverage(){
+        return vote_average;
+    }
+
+    /**
+     *
+     * @param obj
+     * @return true if the IDs of the movies are same and false otherwise
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Movie)) {
+            return false;
+        }
+
+        Movie other = (Movie) obj;
+
+        return other.id == id;
+    }
+}

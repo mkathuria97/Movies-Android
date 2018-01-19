@@ -1,0 +1,62 @@
+package com.example.mayankkathuria.movies;
+
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.squareup.picasso.Picasso;
+import java.util.ArrayList;
+
+
+public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
+
+    public static final String URL_IMAGE = "https://image.tmdb.org/t/p/w1280/";
+    private ArrayList<Movie> movies;
+
+    public MoviesAdapter(ArrayList<Movie> movies){
+        this.movies = movies;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // a LayoutInflater turns a layout XML resource into a View object
+        final View movieListItem = LayoutInflater.from(parent.getContext()).
+                inflate(R.layout.movie_list_item, parent, false);
+
+        return new ViewHolder(movieListItem);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        Movie movie = movies.get(position);
+
+        holder.titleView.setText(movie.getTitle());
+
+        String movieVoteAverage = Double.valueOf(movie.getVoteAverage()).toString();
+        holder.voteAverageView.setText(movieVoteAverage);
+
+        Picasso.with(holder.imageView.getContext()).load(URL_IMAGE +
+                 movie.getPosterPath()).into(holder.imageView);
+    }
+
+    @Override
+    public int getItemCount() {
+        return movies.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView titleView;
+        public TextView voteAverageView;
+        public ImageView imageView;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            titleView = (TextView) itemView.findViewById(R.id.movieTitleTextView);
+            voteAverageView = (TextView) itemView.findViewById(R.id.voteAverageTextView);
+            imageView = (ImageView) itemView.findViewById(R.id.imageView);
+        }
+    }
+}
+
